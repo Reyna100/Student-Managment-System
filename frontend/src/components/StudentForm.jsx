@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios';
 
-function StudentForm() {
+function StudentForm({ getData }) {
     const [form, setForm] = useState({
         first_name: "",
         last_name: "",
@@ -22,6 +22,7 @@ function StudentForm() {
         try {
             await axios.post("http://localhost:5000/students", form);
             alert("Student detail saved");
+            getData();
         } catch (err) {
             console.log(err);
         }
